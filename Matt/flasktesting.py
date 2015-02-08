@@ -41,13 +41,15 @@ def verify():
 	global lastname
 
 	name = firstname + " " + middlei + " " + lastname
+	print name
 
-	collection.find({"name" : name}) 
+	matches = db.namelist.findOne({"name" : name}) 
 
-	for nameL in collection:
+	if matches == None:
 		return True
 
-	return False
+	else:
+		return False
 
 
 
@@ -61,8 +63,8 @@ def my_form_post():
     middlei = request.form['middleinitial']
     lastname = request.form['lastname']
 		
-
-
+    s = verify()
+    print (s)
 
 
 
@@ -71,4 +73,4 @@ def my_form_post():
 	
 
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)
