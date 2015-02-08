@@ -23,5 +23,5 @@
     <br/>
     <center>
       <div id="toprocess">
-	<form action="/" method ='POST'>
+	<form action="/results" method ='GET'>
         <table style="width:75%; background:white;">

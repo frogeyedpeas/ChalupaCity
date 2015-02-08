@@ -54,15 +54,17 @@ app = Flask(__name__)
 
 @app.route('/metastasis')
 def my_form2():
+    print "hi"
+    
     return render_template("metastasis.html")
 
-@app.route('/metastasis', methods=['POST'])
+@app.route('/results', methods=['GET', 'POST'])
 def my_form2_post():
-    global emailarray
-    print "hi"
-    return emailarray[0]
-   # theemail = emailarray[int(request.form['submit'])]
-    #return theemail
+    # global emailarray
+    # theemail = emailarray[int(request.form['submit'])]       
+    # emailID = int(request.form['submit'])
+   
+    return str(request.form)
 
 @app.route('/')
 def my_form():
@@ -78,7 +80,7 @@ def my_form_post():
     global middlei
     global location
     global emailarray
-    
+    #return str(request.form)
     firstname = request.form['firstname']
     middlei = request.form['middleinitial']
     lastname = request.form['lastname']
@@ -125,13 +127,19 @@ def my_form_post():
         Omega.close()
 
         open('templates\\metastasis.html','w').close() #emptied
-
+    
         i = 0
         w = ""
         while(i < len(names)):
-            w = w + tau2 +  str(i) + tau3 + pics[i] + tau31 + names[i] + tau4 + "\n"
+            w = w + tau2 +  str(i) + tau3 + tau31 + names[i] + tau4 + "\n"
             i += 1
-        w = tau1 + w + tau5 #head and drop
+
+        Beta = open('templates\\em.txt','r')
+        tau7 = Beta.read()
+        Beta.close()
+
+        
+        w = tau1 + w + tau7 + tau5 #head and drop
 
         Omega = open('templates\\metastasis.html','w')
         Omega.write(w)
