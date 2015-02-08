@@ -22,22 +22,26 @@ firstname = ""
 middlei = ""
 lastname = ""
 
+
+def dbInsert(name, email, url):
+    global collection
+    collection.insert({"name" : name, "email" : email, "url": url})
+
+
+
+
 app = Flask(__name__)
+
 
 @app.route('/')
 def my_form():
     
     return render_template("bananaFinale.html")
 
-def dbInsert(name, email, url):
-    global collection
-    collection.insert({"name" : name, "email" : email, "url": url})
-
-@app.route('/', methods=['POST'])
-
 
 
     
+@app.route('/', methods=['POST'])    
 def my_form_post():
     global firstname
     global lastname
