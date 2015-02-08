@@ -2,7 +2,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 fromaddr = 'rutgerslostandfound@gmail.com'
-toaddrs  = 'mattlee446@gmail.com'
+toaddrs = '' 
 subject = 'poop'
 
 # Credentials (if needed)

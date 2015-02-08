@@ -1,0 +1,92 @@
+<html>
+
+
+  <head>
+    <script>
+      function myFunction() 
+      {
+        document.getElementById("myra").innerHTML = "Submission Confirmed";
+      }
+    </script>
+  <style>
+
+    body {background-color: red;}
+    body {    font-family: Arial;}
+    table, th, td {background-color:white;}
+    .ru_img {width: 50%;box-sizing: border-box;}
+    .ru_img+td {width: 50%;text-align: center;}
+    .ru_img+td>.wrapper {display: inline-block;text-align: left;}
+
+  </style>
+</head>
+<br><br><br>
+<center>
+<div id="toprocess">
+<table style="width:75%">
+
+  <tr>
+    <td class="ru_img"><img src="http://i57.tinypic.com/6p51k8.jpg"></td>
+
+    <td>
+      <br/>
+      <br/>
+        <b>Welcome to RuFound!</b> <br><br>The service for notifying students of their missing IDs. Please fill <br>out the boxes below including the location drop down menu. <br>If middle name is not present then leave it empty<br> and hit send to notify the student.
+
+        <br>
+      <br/><div class="wrapper">
+
+
+<form action="/" method ='POST'><div>
+
+<b>First Name:<br /></b>
+<input type="text" name="firstname" value="" style="width: 210px;"/>
+
+<br> <br>
+
+<b>Middle Initial:<br /></b>
+<input type="text" name="middleinitial" value="" style="width: 210px;"/>
+
+<br> <br>
+
+<b>Last Name:<br /></b>
+<input type="text" name="lastname" value="" style="width: 210px;"/>
+<br /><br />
+
+
+<b>Location:<br /></b>
+
+<select name = "location">
+  <option value="1"></option>
+  <option value="2">Busch Student Center</option>
+  <option value="3">Cook Student Center</option>
+  <option value="4">College Avenue Student Center</option>
+  <option value="5">Douglass Student Center</option>
+  <option value="6">Livingston Student Center</option>
+  <option value="7">Brower Commons</option>
+  <option value="8">Busch Dining Hall</option>
+  <option value="9">Neilson Dining Hall</option>
+  <option value="10">Livingston Dining Commons</option>
+</select>
+
+
+  </div></form>
+
+  <button onclick="myFunction()"  style="width: 210px; background-color: black; color: white; font-weight: bold; padding-top: 3px; padding-bottom: 3px;" />
+
+  Submit
+
+  </button>
+  <br>
+  <div id="myra" style="text-align: center;">
+
+</div>
+
+
+
+      </div><img src="http://i62.tinypic.com/359kf9j.jpg"></td> 
+    </tr>
+
+
+    </table>
+  </center>
+</html>
