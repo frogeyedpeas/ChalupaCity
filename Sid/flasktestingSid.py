@@ -1,0 +1,148 @@
+from flask import Flask
+from flask import request
+from flask import render_template
+from flask import abort, redirect, url_for
+import pymongo
+from pymongo import MongoClient
+import smtplib
+from email.mime.text import MIMEText
+
+
+
+fromaddr = 'rutgerslostandfound@gmail.com'
+toaddrs = '' 
+subject = 'Your RUID has been found'
+username = 'rutgerlostandfound'
+password = 'chalupacity'
+
+location = ''
+
+URI = "mongodb://admin:chalupacity@ds041651.mongolab.com:41651/rufound"
+client = MongoClient(URI)
+db = client.rufound
+collection = db.namelist
+firstname = ""
+middlei = ""
+lastname = ""
+emailarray = []
+
+
+
+def dbInsert(name, email, url):
+    global collection
+    collection.insert({"name" : name, "email" : email, "url": url})
+def verify():
+	global firstname
+	global middlei
+	global lastname
+	global name
+
+	name = firstname + " " + middlei + " " + lastname
+	
+	matches = db.namelist.find_one({"name" : name}) 
+	if matches == None:
+		return False 
+	else:
+		return True
+
+def getMatches():
+	matches = db.namelist.find({"name" : name})
+	return matches
+
+
+app = Flask(__name__)
+
+@app.route('/metastasis')
+def my_form2():
+    return render_template("metastasis.html")
+
+@app.route('/metastasis', methods=['POST'])
+def my_form2_post():
+    global emailarray
+    print "hi"
+    return emailarray[0]
+   # theemail = emailarray[int(request.form['submit'])]
+    #return theemail
+
+@app.route('/')
+def my_form():
+    
+    return render_template("bananaFinale.html")
+
+
+
+@app.route('/', methods=['POST'])
+def my_form_post():
+    global firstname
+    global lastname
+    global middlei
+    global location
+    global emailarray
+    
+    firstname = request.form['firstname']
+    middlei = request.form['middleinitial']
+    lastname = request.form['lastname']
+    location = request.form['location']
+        
+
+    isValidStudent = verify()
+
+    if isValidStudent == True:
+        matches = getMatches()
+        names = []
+        emails = []
+        pics = []
+        count = 0
+        for nameL in matches: #populate the arrays
+            names.append(nameL["name"])
+            emails.append(nameL["email"])
+            pics.append(nameL["url"])
+            
+        emailarray = emails
+        
+        Omega = open('templates\\metachunk.txt','r') #Top half of HTML File
+        tau1 = Omega.read() #grabbed the top chunk
+        Omega.close()
+                
+        Omega = open('templates\\beta1.txt','r')
+        tau2 = Omega.read()
+        Omega.close()
+
+        Omega = open('templates\\beta2.txt','r')
+        tau3 = Omega.read()
+        Omega.close()
+
+        Omega = open('templates\\beta21.txt','r')
+        tau31 = Omega.read()
+        Omega.close()
+        
+        Omega = open('templates\\beta3.txt','r')
+        tau4 = Omega.read()
+        Omega.close()
+
+        Omega = open('templates\\lochunk.txt','r')
+        tau5 = Omega.read()
+        Omega.close()
+
+        open('templates\\metastasis.html','w').close() #emptied
+
+        i = 0
+        w = ""
+        while(i < len(names)):
+            w = w + tau2 +  str(i) + tau3 + pics[i] + tau31 + names[i] + tau4 + "\n"
+            i += 1
+        w = tau1 + w + tau5 #head and drop
+
+        Omega = open('templates\\metastasis.html','w')
+        Omega.write(w)
+        Omega.close()
+        return redirect(url_for('my_form2'))
+        
+        #return render_template("metastasis.html")		
+
+    else: #if no matches found
+        return "you done fucked up pussy"
+    
+
+if __name__ == '__main__':
+	app.run(debug=True)
