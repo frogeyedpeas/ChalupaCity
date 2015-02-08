@@ -1,18 +1,46 @@
-import pymongo
-import sys
+from flask import Flask, render_template, flash, request, redirect
+from flask.ext.wtf import Form
+from wtforms.ext.appengine.db import model_form
+from wtforms.validators import Required
+from wtforms import TextField, TextAreaField
 
 from pymongo import MongoClient
+import sys
+
 connection = MongoClient()
 db = connection.rufound
+collection = db.users
+
+app = Flask(__name__)
+app.debug() = true;
+app.run();
+
+class ruFoundForm(Form):
+	firstname = TextField('firstname', validators=[Required()])
+	lastname = TextField('lastname', validators = [Required()])
+
+@app.route('/', methods=['GET', 'POST'])
+def set():
+	form = ruFoundForm()
+	if form.validate_on_submit():
+		message = "Submitted!"
+		flash(message)
+		dictionary = {"firstname": form.firstname.data, "lastname": form.lastname.data}
+	return render_template("index.html", form = form)
+
+@app.route('/go', methods=['GET', 'POST'])
+def go():
+		fname = request.form.get("firstname", None) 
+		lname = request.form.get("lastname", None)
+		full = firstname+" "+lastname
+		person = db.users.find("fullname": full.upper())
+			if full is None:
+			notfoundmessage = "Person not found!"
+			flash(notfoundmessage)
+	return render_template("index.html", form = form)
 
 
-
-#input_first = raw_input("Enter First Name: ")
-#first = db.users.find({"firstname": input_first})
-
-#for result_object in first:
-		#print result_object
-
+#######????
 input_last = raw_input("Enter Last Name: ")
 
 last = db.users.find({"lastname": input_last})
@@ -20,3 +48,7 @@ last = db.users.find({"lastname": input_last})
 db.users.find({})
 for result_object in last:
 		print result_object
+
+if __name__ == '__main__':
+	port = int(os.environ.get("PORT", 5000))
+	app.run(host='0.0.0.0', port=port)
