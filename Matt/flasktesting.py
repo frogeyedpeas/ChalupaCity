@@ -32,14 +32,6 @@ def my_form():
 def dbInsert(name, email, url):
     global collection
     collection.insert({"name" : name, "email" : email, "url": url})
-
-@app.route('/', methods=['POST'])
-
-<<<<<<< HEAD
-
-
-    
-=======
 def verify():
 	global firstname
 	global middlei
@@ -47,43 +39,26 @@ def verify():
 
 	name = firstname + " " + middlei + " " + lastname
 	print name
-
-	matches = db.namelist.findOne({"name" : name}) 
-
+	matches = db.namelist.find_one({"name" : name}) 
 	if matches == None:
-		return True
-
+		return True 
 	else:
 		return False
 
 
-
->>>>>>> ab1799f4f04236a3d21bc6259f102aeb5b1f639a
+@app.route('/', methods=['POST'])
 def my_form_post():
-    global firstname
-    global lastname
-    global middlei
+	global firstname
+	global lastname
+	global middlei
    
-   
-    firstname = request.form['firstname']
-    middlei = request.form['middleinitial']
-    lastname = request.form['lastname']
-<<<<<<< HEAD
-
-    
-    return render_template("bananaFinale.html")
+	firstname = request.form['firstname']
+	middlei = request.form['middleinitial']
+	lastname = request.form['lastname']
 	
-=======
-		
-    s = verify()
-    print (s)
+	isValidStudent = verify()
 
 
-
->>>>>>> ab1799f4f04236a3d21bc6259f102aeb5b1f639a
-
-
-	
 
 if __name__ == '__main__':
 	app.run(debug=True)
