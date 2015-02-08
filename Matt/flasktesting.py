@@ -35,9 +35,30 @@ def dbInsert(name, email, url):
 
 @app.route('/', methods=['POST'])
 
+<<<<<<< HEAD
 
 
     
+=======
+def verify():
+	global firstname
+	global middlei
+	global lastname
+
+	name = firstname + " " + middlei + " " + lastname
+	print name
+
+	matches = db.namelist.findOne({"name" : name}) 
+
+	if matches == None:
+		return True
+
+	else:
+		return False
+
+
+
+>>>>>>> ab1799f4f04236a3d21bc6259f102aeb5b1f639a
 def my_form_post():
     global firstname
     global lastname
@@ -47,13 +68,22 @@ def my_form_post():
     firstname = request.form['firstname']
     middlei = request.form['middleinitial']
     lastname = request.form['lastname']
+<<<<<<< HEAD
 
     
     return render_template("bananaFinale.html")
 	
+=======
+		
+    s = verify()
+    print (s)
+
+
+
+>>>>>>> ab1799f4f04236a3d21bc6259f102aeb5b1f639a
 
 
 	
 
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)
