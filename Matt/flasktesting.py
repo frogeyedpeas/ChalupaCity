@@ -18,6 +18,10 @@ app = Flask(__name__)
 def my_form():
     return render_template("bananas.html")
 
+def dbInsert(name, email, url):
+	global collection
+	collection.insert({"name" : name, "email" : email, "url": url})
+
 @app.route('/', methods=['POST'])
 
 def my_form_post():
@@ -25,14 +29,16 @@ def my_form_post():
 	global lastname
 	global middlei
 
-	textarray = []
 	firstname = request.form['firstname']
 	middlei = request.form['middlei']
 	lastname = request.form['lastname']
 	
-	everything = db.namelist.find()
+	everything = db.namelist.find({"name" : "de"})
 
-	return everything
+	for person in everything:
+		print person["email"]
+	
+	return render_template("bananas.html")
 	
 
 if __name__ == '__main__':
