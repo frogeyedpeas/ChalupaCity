@@ -21,6 +21,7 @@ collection = db.namelist
 firstname = ""
 middlei = ""
 lastname = ""
+name = ""
 
 app = Flask(__name__)
 
@@ -36,14 +37,20 @@ def verify():
 	global firstname
 	global middlei
 	global lastname
+	global name
 
 	name = firstname + " " + middlei + " " + lastname
-	print name
+	
 	matches = db.namelist.find_one({"name" : name}) 
 	if matches == None:
-		return True 
+		return False 
 	else:
-		return False
+		return True
+
+def getMatches():
+	matches = db.namelist.find({"name" : name})
+	return matches
+
 
 
 @app.route('/', methods=['POST'])
@@ -57,6 +64,21 @@ def my_form_post():
 	lastname = request.form['lastname']
 	
 	isValidStudent = verify()
+
+	if isValidStudent == True:
+		matches = getMatches()
+		names = []
+		emails = []
+		pics = []
+		count = 0
+		for nameL in matches: #populate the arrays
+			names.append(nameL["name"])
+			emails.append(nameL["email"])
+			pics.append(nameL["url"])
+		return emails[0]		
+
+	else: #if no matches found
+		return "you done fucked up pussy"
 
 
 
