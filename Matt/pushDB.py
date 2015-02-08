@@ -1,10 +1,12 @@
 import pymongo
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
+URI = "mongodb://admin:chalupacity@ds041651.mongolab.com:41651/rufound"
 
-db = client.nameDB
-collection = db.nameList
+client = MongoClient(URI)
+
+db = client.rufound
+collection = db.namelist
 
 def dbInsert(name, email, url):
 	person = {name: [email, url]}
@@ -20,5 +22,5 @@ while(True):
 	if name == "e" or email == "e" or url =="e":
 		print "input not inserted"
 		break
-	dbInsert(name, email, )
+	dbInsert(name, email, url)
 	print "Entry inserted\n"
