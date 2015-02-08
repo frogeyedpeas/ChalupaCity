@@ -6,14 +6,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def my_form():
-    return render_template("my-form.html")
+    return render_template("bananas.html")
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-
-    text = request.form['text']
-    processed_text = text.upper()
-    return processed_text
+	textarray = []
+	string1 = request.form['firstname']
+	#string2 = request.form['lastname']
+   
+	print string1
+	return string1
+	
 
 if __name__ == '__main__':
     app.run()
