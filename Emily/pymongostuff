@@ -8,7 +8,7 @@ db = connection.rufound
 
 
 #input_first = raw_input("Enter First Name: ")
-#first = db.users.find({"firstname": input_first})
+first = db.users.find({"firstname": input_first})
 
 #for result_object in first:
 		#print result_object
