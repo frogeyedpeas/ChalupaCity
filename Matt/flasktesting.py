@@ -35,6 +35,22 @@ def dbInsert(name, email, url):
 
 @app.route('/', methods=['POST'])
 
+def verify():
+	global firstname
+	global middlei
+	global lastname
+
+	name = firstname + " " + middlei + " " + lastname
+
+	collection.find({"name" : name}) 
+
+	for nameL in collection:
+		return True
+
+	return False
+
+
+
 def my_form_post():
     global firstname
     global lastname
@@ -42,11 +58,14 @@ def my_form_post():
    
    
     firstname = request.form['firstname']
-    print "hi"
     middlei = request.form['middleinitial']
     lastname = request.form['lastname']
-    return render_template("bananaFinale.html")
-	
+		
+
+
+
+
+
 
 
 	
