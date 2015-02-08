@@ -103,7 +103,7 @@ def my_form_post():
             pics.append(nameL["url"])
             
         emailarray = emails
-        
+        t = '''
         msg = MIMEText("Dear Rutgers Student, \n Your Rutgers ID has been found in: " + location + "! \n Please come by to pick it up! \n \n Yours Truly, \n RuFound ")
         msg['From'] = fromaddr
         msg['To'] = emailarray[0]
@@ -114,9 +114,9 @@ def my_form_post():
         server.starttls()
         server.login(username,password)
         server.sendmail(fromaddr, emailarray[0], msg.as_string())
-        server.quit()
+        server.quit() '''
 
-        return render_template("bananaFinale.html")
+        #return render_template("bananaFinale.html")
         
     
         Omega = open('templates\\metachunk.txt','r') #Top half of HTML File
@@ -148,7 +148,7 @@ def my_form_post():
         i = 0
         w = ""
         while(i < len(names)):
-            w = w + tau2 +  str(i) + tau3 + tau31 + names[i] + tau4 + "\n"
+            w = w + tau2 +  str(i) + tau3 + pics[i] + tau31 + names[i] + tau4 + "\n"
             i += 1
 
         Beta = open('templates\\em.txt','r')
@@ -156,7 +156,7 @@ def my_form_post():
         Beta.close()
 
         
-        w = tau1 + w + tau7 + tau5 #head and drop
+        w = tau1 + w + tau5 #head and drop
 
         Omega = open('templates\\metastasis.html','w')
         Omega.write(w)
