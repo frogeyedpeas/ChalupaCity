@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+  <head>
+    <script>
+      function myFunction() 
+      {
+        document.getElementById("myra").innerHTML = "Submission Confirmed";
+      }
+    </script>
+    <style>
+
+      body {background-color: red;}
+      body {    font-family: Arial;}
+      table, th, td {background-color:white;}
+      .ru_img {width: 50%;box-sizing: border-box;}
+      .ru_img+td {width: 50%;text-align: center;}
+      .ru_img+td>.wrapper {display: inline-block;text-align: left;}
+
+    </style>
+  </head>
+  <body>
+    <div id="processer" value="1">
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <center>
+        <div id="toprocess">
+          <table style="width:75%">
+
+            <tr>
+              <td class="ru_img">
+                <img src="http://i57.tinypic.com/6p51k8.jpg"/>
+              </td>
+
+              <td>
+                <br/>
+                <br/>
+                <p>
+                  <b>
+                    Welcome to RuFound!
+                  </b>
+                  <br/>
+                  <br/>The service for notifying students of their missing IDs. Please fill 
+                  <br/>out the boxes below including the location drop down menu. 
+                  <br/>If middle name is not present then leave it empty
+                  <br/> and hit send to notify the student.
+                </p>
+
+                <br/>
+                <br/>
+                <div class="wrapper">
+
+
+                  <form action="/" method ='POST'>
+                    <div>
+
+                      <b>
+                        First Name:
+                      </b>
+                      <br/>
+                      <input type="text" name="firstname" value="" style="width: 210px;"/>
+
+                      <br/>
+                      <br/>
+
+                      <b>
+                        Middle Initial:
+                      </b>
+                      <br/>
+                      <input type="text" name="middleinitial" value="" style="width: 210px;"/>
+
+                      <br/> 
+                      <br/>
+
+                      <b>
+                        Last Name:
+                      </b>
+                      <br/>
+                      <input type="text" name="lastname" value="" style="width: 210px;"/>
+                      <br/>
+                      <br/>
+
+
+                      <b>
+                        Location:
+                      </b>
+                      <br/>
+
+                      <select name = "location">
+                        <option value=""></option>
+                        <option value="Busch Student Center">Busch Student Center</option>
+                        <option value="Cook Student Center">Cook Student Center</option>
+                        <option value="College Avenue Student Center">College Avenue Student Center</option>
+                        <option value="Douglass Student Center">Douglass Student Center</option>
+                        <option value="Livingston Student Center">Livingston Student Center</option>
+                        <option value="Brower Commons">Brower Commons</option>
+                        <option value="Busch Dining Hall">Busch Dining Hall</option>
+                        <option value="Neilson Dining Hall">Neilson Dining Hall</option>
+                        <option value="Livingston Dining Commons">Livingston Dining Commons</option>
+                      </select>
+
+                    </div>
+                    <input type="Submit" name="" onclick="myFunction()" value="submit" style="width: 210px; background-color: black; color: white; font-weight: bold; padding-top: 3px; padding-bottom: 3px;" />
+
+                  
+
+                    <br/>
+                    <div id="myra" style="text-align: center;">
+                    </div>  
+                  </form>
+
+                                
+              </div>
+              <img src="http://i62.tinypic.com/359kf9j.jpg"/>
+            </td> 
+          </tr>
+        </table>
+      </center>
+    <body>
+</html>

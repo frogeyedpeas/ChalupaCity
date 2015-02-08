@@ -51,29 +51,30 @@ def getMatches():
 
 app = Flask(__name__)
 
-@app.route('/metastasis')
+@app.route('/')
 def my_form2():
-    print "hi"
-    
-    return render_template("metastasis.html")
 
-@app.route('/results', methods=['GET', 'POST'])
+    return render_template("bananaFinale.html")
+
+@app.route('/', methods=['POST'])
 def my_form2_post():
     # global emailarray
     # theemail = emailarray[int(request.form['submit'])]       
     # emailID = int(request.form['submit'])
-    return str(request.path)
-    return str(request.form)
+    return redirect(url_for('my_form'))
+    
 
-@app.route('/')
+@app.route('/metastasis/')
 def my_form():
     
-    return render_template("bananaFinale.html")
+    return render_template("metastasis.html")
 
 
 
-@app.route('/', methods=['POST'])
+@app.route('/metastasis/', methods=['POST'])
 def my_form_post():
+    return str(request.form)
+
     global firstname
     global lastname
     global middlei
@@ -118,7 +119,7 @@ def my_form_post():
 
         #return render_template("bananaFinale.html")
         
-    
+        w = '''
         Omega = open('templates\\metachunk.txt','r') #Top half of HTML File
         tau1 = Omega.read() #grabbed the top chunk
         Omega.close()
@@ -160,11 +161,10 @@ def my_form_post():
 
         Omega = open('templates\\metastasis.html','w')
         Omega.write(w)
-        Omega.close()
-        return redirect(url_for('my_form2'))
+        Omega.close() '''
+        return redirect(url_for('my_form2')) 
         
-        #return render_template("metastasis.html")	'''
-        return render_template("bananaFinale.html")
+      
 
     else: #if no matches found
         i = 0

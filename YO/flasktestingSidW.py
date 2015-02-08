@@ -51,19 +51,19 @@ def getMatches():
 
 app = Flask(__name__)
 
-@app.route('/metastasis')
+@app.route('/metastasis/')
 def my_form2():
     print "hi"
     
     return render_template("metastasis.html")
 
-@app.route('/results', methods=['GET', 'POST'])
+@app.route('/metastasis/', methods=['GET', 'POST'])
 def my_form2_post():
     # global emailarray
     # theemail = emailarray[int(request.form['submit'])]       
     # emailID = int(request.form['submit'])
-    return str(request.path)
-    return str(request.form)
+    # return str(request.path)
+    return str(request.form["0"])
 
 @app.route('/')
 def my_form():

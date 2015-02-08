@@ -23,5 +23,5 @@
     <br/>
     <center>
       <div id="toprocess">
-	<form action="/results" method ="POST">
+	<form action="/metastasis/" method ="POST">
         <table style="width:75%; background:white;">
