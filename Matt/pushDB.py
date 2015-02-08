@@ -13,7 +13,7 @@ def dbInsert(name, email, url):
 	collection.insert(person)
 
 while(True):
-	x = raw_input("Type in Name: ")
+	"""x = raw_input("Type in Name: ")
 	name = x
 	x = raw_input("Type in Email: ")
 	email = x
@@ -22,5 +22,10 @@ while(True):
 	if name == "e" or email == "e" or url =="e":
 		print "input not inserted"
 		break
-	dbInsert(name, email, url)
+	dbInsert(name, email, url)"""
+
+
+	everything = db.namelist.find()
+
+	print everything
 	print "Entry inserted\n"

@@ -30,12 +30,9 @@ def my_form_post():
 	middlei = request.form['middlei']
 	lastname = request.form['lastname']
 	
-	everything = db.nameList.find({firstname + " " + middlei + " " + lastname : 
-		firstname + " " + middlei + " " + lastname } )
+	everything = db.namelist.find()
 
-	print everything
-	
-	return render_template("bananas.html")
+	return everything
 	
 
 if __name__ == '__main__':
