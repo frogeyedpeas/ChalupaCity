@@ -26,48 +26,30 @@ app = Flask(__name__)
 
 @app.route('/')
 def my_form():
+    
     return render_template("bananaFinale.html")
 
 def dbInsert(name, email, url):
-	global collection
-	collection.insert({"name" : name, "email" : email, "url": url})
+    global collection
+    collection.insert({"name" : name, "email" : email, "url": url})
 
 @app.route('/', methods=['POST'])
 
-
-
 def my_form_post():
-	global firstname
-	global lastname
-	global middlei
-	global location
-	global fromaddr
-	global toaddrs
-
-	firstname = request.form['firstname']
-	middlei = request.form['middlei']
-	lastname = request.form['lastname']
-
-	print firstname
-	"""
-	namequery = firsatname + " " + middlei + " " + lastname
-	everything = db.namelist.find({"name" : namequery})
-
-
-	for person in everything:
-		print person["email"]
+    global firstname
+    global lastname
+    global middlei
+   
+   
+    firstname = request.form['firstname']
+    print "hi"
+    middlei = request.form['middleinitial']
+    lastname = request.form['lastname']
+    return render_template("bananaFinale.html")
 	
-	email = person["email"] #bes reassigned later
-
-	toaddrs = email 
 
 
-
-
-
-	"""
-	return render_template("bananaFinale.html")
 	
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
