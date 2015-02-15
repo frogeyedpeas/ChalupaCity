@@ -51,10 +51,8 @@ def getMatches():
 
 app = Flask(__name__)
 
-@app.route('/metastasis')
-def my_form2():
-    print "hi"
-    
+@app.route('/metastasis/')
+def my_form2():  
     return render_template("metastasis.html")
 
 @app.route('/results', methods=['GET', 'POST'])
@@ -116,7 +114,7 @@ def my_form_post():
         server.sendmail(fromaddr, emailarray[0], msg.as_string())
         server.quit()
 
-        return render_template("bananaFinale.html")
+       
         
     
         Omega = open('templates\\metachunk.txt','r') #Top half of HTML File
@@ -156,7 +154,7 @@ def my_form_post():
         Beta.close()
 
         
-        w = tau1 + w + tau7 + tau5 #head and drop
+        w = tau1 + w + tau5 #head and drop
 
         Omega = open('templates\\metastasis.html','w')
         Omega.write(w)

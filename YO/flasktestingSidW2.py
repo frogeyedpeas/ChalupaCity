@@ -51,12 +51,12 @@ def getMatches():
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/metastasis/')
 def my_form2():
 
-    return render_template("bananaFinale.html")
+    return render_template("metastasis.html")
 
-@app.route('/', methods=['POST'])
+@app.route('/metastasis/', methods=['POST'])
 def my_form2_post():
     # global emailarray
     # theemail = emailarray[int(request.form['submit'])]       
@@ -64,16 +64,16 @@ def my_form2_post():
     return redirect(url_for('my_form'))
     
 
-@app.route('/metastasis/')
+@app.route('/')
 def my_form():
     
-    return render_template("metastasis.html")
+    return render_template("bananaFinale.html")
 
 
 
-@app.route('/metastasis/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def my_form_post():
-    return str(request.form)
+  
 
     global firstname
     global lastname
@@ -88,7 +88,7 @@ def my_form_post():
     lastname = request.form['lastname']
     location = request.form['location']
         
-
+    
     isValidStudent = verify()
 
     if isValidStudent == True:
@@ -104,22 +104,10 @@ def my_form_post():
             pics.append(nameL["url"])
             
         emailarray = emails
-        t = '''
-        msg = MIMEText("Dear Rutgers Student, \n Your Rutgers ID has been found in: " + location + "! \n Please come by to pick it up! \n \n Yours Truly, \n RuFound ")
-        msg['From'] = fromaddr
-        msg['To'] = emailarray[0]
-        msg['Subject'] = subject
-
         
-        server = smtplib.SMTP('smtp.gmail.com:587')
-        server.starttls()
-        server.login(username,password)
-        server.sendmail(fromaddr, emailarray[0], msg.as_string())
-        server.quit() '''
-
-        #return render_template("bananaFinale.html")
+       
         
-        w = '''
+        
         Omega = open('templates\\metachunk.txt','r') #Top half of HTML File
         tau1 = Omega.read() #grabbed the top chunk
         Omega.close()
@@ -161,7 +149,9 @@ def my_form_post():
 
         Omega = open('templates\\metastasis.html','w')
         Omega.write(w)
-        Omega.close() '''
+        Omega.close()
+
+
         return redirect(url_for('my_form2')) 
         
       

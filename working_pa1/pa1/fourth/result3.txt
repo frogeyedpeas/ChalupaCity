@@ -1,0 +1,11 @@
+inserted
+absent
+inserted
+duplicate
+error
+error
+absent
+present
+inserted
+duplicate
+absent

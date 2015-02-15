@@ -53,8 +53,7 @@ app = Flask(__name__)
 
 @app.route('/metastasis/')
 def my_form2():
-    print "hi"
-    
+ 
     return render_template("metastasis.html")
 
 @app.route('/metastasis/', methods=['GET', 'POST'])
@@ -144,7 +143,7 @@ def my_form_post():
         Omega.close()
 
         open('templates\\metastasis.html','w').close() #emptied
-    
+        return pics[i]
         i = 0
         w = ""
         while(i < len(names)):

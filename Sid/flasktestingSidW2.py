@@ -24,6 +24,7 @@ firstname = ""
 middlei = ""
 lastname = ""
 emailarray = []
+namearray = []
 
 
 
@@ -51,19 +52,42 @@ def getMatches():
 
 app = Flask(__name__)
 
-@app.route('/metastasis')
+@app.route('/metastasis/')
 def my_form2():
-    print "hi"
-    
     return render_template("metastasis.html")
 
-@app.route('/results', methods=['GET', 'POST'])
+@app.route('/metastasis/', methods=['POST'])
 def my_form2_post():
-    # global emailarray
-    # theemail = emailarray[int(request.form['submit'])]       
-    # emailID = int(request.form['submit'])
-    return str(request.path)
-    return str(request.form)
+   
+
+    global fromaddr
+    global toaddrs
+    global subject
+    global username
+    global password
+    global location
+    global emailarray
+    global namearray
+    point =  int(request.form['submit'])
+    try: 
+        msg = MIMEText("Dear " +  namarray[point] + ", \n \n Your Rutgers ID has been found in: " + location + "! \n Please come by to pick it up! \n \n Yours Truly, \n \n RuFound ")
+        msg['From'] = fromaddr
+        msg['To'] = emailarray[point]
+        msg['Subject'] = subject
+
+        
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.login(username,password)
+        server.sendmail(fromaddr, emailarray[0], msg.as_string())
+        server.quit()
+    except:
+        i = 0
+
+     
+
+     
+    return redirect(url_for('my_form'))
 
 @app.route('/')
 def my_form():
@@ -81,6 +105,9 @@ def my_form_post():
     global emailarray
     global fromaddr
     global subject
+    global namearray
+
+    
     #return str(request.form)
     firstname = request.form['firstname']
     middlei = request.form['middleinitial']
@@ -103,18 +130,8 @@ def my_form_post():
             pics.append(nameL["url"])
             
         emailarray = emails
-        t = '''
-        msg = MIMEText("Dear Rutgers Student, \n Your Rutgers ID has been found in: " + location + "! \n Please come by to pick it up! \n \n Yours Truly, \n RuFound ")
-        msg['From'] = fromaddr
-        msg['To'] = emailarray[0]
-        msg['Subject'] = subject
-
-        
-        server = smtplib.SMTP('smtp.gmail.com:587')
-        server.starttls()
-        server.login(username,password)
-        server.sendmail(fromaddr, emailarray[0], msg.as_string())
-        server.quit() '''
+        namearray = names
+       
 
         #return render_template("bananaFinale.html")
         
@@ -164,7 +181,7 @@ def my_form_post():
         return redirect(url_for('my_form2'))
         
         #return render_template("metastasis.html")	'''
-        return render_template("bananaFinale.html")
+       
 
     else: #if no matches found
         i = 0
@@ -172,4 +189,5 @@ def my_form_post():
     
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(host='0.0.0.0', port=80)
+	
