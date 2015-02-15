@@ -62,21 +62,19 @@ int main(int argc, char** argv)
 	while(i < rows*columns)
 	{
 		fgets(buffer,100,readfile);
-		token = strtok(buffer, "\t"); //grab the first token using space delimiter
+		token = strtok(buffer, "\t"); 
 		while(i/j < 1)
 		{
-			//printf("%s hello\n", token);
-			//strcpy(copy,token);
+			
 			array1[i] = atoi(token);
-			//printf("%d ", array1[i]);
 			i++;
-			token = strtok(NULL, "\t"); //what the fuck?
+			token = strtok(NULL, "\t"); 
 		}
 		j+=columns;
-		//printf("%c", '\n'); //flush the stream
+	
 	}
 	
-	fgets(buffer,100,readfile); //grab the new line
+	fgets(buffer,100,readfile); 
 	
 	while(i < 2*rows*columns)
 	{
@@ -85,12 +83,12 @@ int main(int argc, char** argv)
 		while(i/j < 1)
 		{
 			array2[i-rows*columns] = atoi(token);
-			//printf("%d ", array2[i-rows*columns]);
+			
 			i++;
 			token = strtok(NULL, "\t");
 		}
 		j+=columns;
-		//printf("%c", '\n');
+	
 
 	}
 
@@ -111,8 +109,6 @@ int main(int argc, char** argv)
 		
 	}
 
-		
-	
 
 	return(0);
 
