@@ -7,13 +7,14 @@
 int main(int argc, char** argv)
 {
 	int i;
+	int x;
 	if(argc > 2 || argc < 2)
 	{
 		printf("%s", "error\n");
 		return(0);
 	}
 
-	int x;
+	
 	x  = atoi(argv[1]);
 	if(x == 1)
 	{
