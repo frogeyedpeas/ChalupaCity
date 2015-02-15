@@ -13,7 +13,8 @@ int main(int argc, char** argv)
 		return(0);
 	}
 
-	int x  = atoi(argv[1]);
+	int x;
+	x  = atoi(argv[1]);
 	if(x == 1)
 	{
 		printf("%s", "no\n");

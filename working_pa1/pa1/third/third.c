@@ -68,7 +68,7 @@ struct lNode *removeNode(struct lNode *head, int value)
 void printContents(struct lNode *head) 
 {
 	struct lNode *mediator;
-	*mediator = head;
+	mediator = head;
 	
 	while(mediator != NULL)
 	{
@@ -89,7 +89,7 @@ void printContents(struct lNode *head)
 struct lNode *addNode(struct lNode *head, int value)
 {
 	struct lNode *mediator;
-	*mediator = head; 
+	mediator = head; 
 
 	
 	struct lNode *x = malloc(sizeof(struct lNode)); 
@@ -148,18 +148,20 @@ struct lNode *addNode(struct lNode *head, int value)
 
 int main(int argc, char** argv)
 {
+	struct lNode *head;
+	head = NULL; 
+	FILE *readfile;
+	int value; 
+	char type; 
+	char buffer[100];
+	
 	if(argc < 2 || argc > 2)
 	{
 		printf("%s", "Incorrect Number of Arguments");
 		return(0);
 	}
 
-	struct lNode *head;
-	head = NULL; 
-	FILE *readfile;
-	int value; 
-	char type; 
-	char buffer[100];  
+	  
 
 	readfile = fopen(argv[1], "r"); 
 
