@@ -6,6 +6,7 @@
 
 int main(int argc, char** argv)
 {
+	int i;
 	if(argc > 2 || argc < 2)
 	{
 		printf("%s", "error\n");
@@ -25,7 +26,7 @@ int main(int argc, char** argv)
 	}
 	
 
-	int i = 2; //start it at value 2
+	i = 2; 
 	while(i < x)
 	{
 		if(x%i == 0)
