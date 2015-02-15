@@ -5,6 +5,7 @@
 
 int main(int argc, char** argv)
 {
+	int x;
 	if(argc > 2)
 	{
 		printf("error\n");
@@ -16,7 +17,7 @@ int main(int argc, char** argv)
 		return(0);
 	}
 
-	int x = atoi(argv[1]); //extracted input number
+	x = atoi(argv[1]);
 	if(x%2 == 0)
 	{
 		printf("even\n");
