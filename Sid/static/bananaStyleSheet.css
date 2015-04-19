@@ -1,0 +1,53 @@
+body
+{
+	background-color:red;
+	font-family:Arial;
+}
+
+table,th,td
+{
+	background-color:white;
+}
+
+.ru_img
+{
+	width: 50%;
+	box-sizing: border-box;
+}
+
+.ru_img+td
+{
+	width:50%;
+	text-align:center;
+}
+
+.ru_img+td>.wrapper
+{
+	display: inline-block;
+	text-align: left;
+}
+
+#global_table
+{
+	width:75%;
+}
+
+#form
+{
+	width:100%;
+}
+
+#roller
+{
+	width: 110%; 
+	background-color: black; 
+	color: white; 
+	font-weight: bold; 
+	padding-top: 3px; 
+	padding-bottom: 3px;
+}
+
+#myra
+{
+	text-align: center;
+}

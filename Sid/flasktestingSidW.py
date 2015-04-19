@@ -1,3 +1,4 @@
+
 from flask import Flask
 from flask import request
 from flask import render_template
@@ -103,7 +104,7 @@ def my_form_post():
             pics.append(nameL["url"])
             
         emailarray = emails
-        t = '''
+        #t='''
         msg = MIMEText("Dear Rutgers Student, \n Your Rutgers ID has been found in: " + location + "! \n Please come by to pick it up! \n \n Yours Truly, \n RuFound ")
         msg['From'] = fromaddr
         msg['To'] = emailarray[0]
@@ -114,7 +115,7 @@ def my_form_post():
         server.starttls()
         server.login(username,password)
         server.sendmail(fromaddr, emailarray[0], msg.as_string())
-        server.quit() '''
+        server.quit() 
 
         #return render_template("bananaFinale.html")
         
@@ -172,4 +173,4 @@ def my_form_post():
     
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(host='0.0.0.0', port=80)

@@ -64,7 +64,7 @@ struct lNode *removeNode(struct lNode *head, int value)
 		mediator = (*mediator).child;
 	}
 
-	return(NULL);
+	return(head);
 }
 
 void printContents(struct lNode *head) 
@@ -91,9 +91,10 @@ void printContents(struct lNode *head)
 struct lNode *addNode(struct lNode *head, int value)
 {
 	struct lNode *mediator;
-	mediator = head; 
+	
 	struct lNode *x;
 
+	mediator = head; 
 	x = malloc(sizeof(struct lNode)); 
 	
 	(*x).arg = value; 
@@ -146,6 +147,8 @@ struct lNode *addNode(struct lNode *head, int value)
 
 		mediator = (*mediator).child;
 	}
+
+	return(head);
 }
 
 int main(int argc, char** argv)
